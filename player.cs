@@ -24,6 +24,7 @@ public class player : KinematicBody2D
     {
         currentSprite = GetNode<Sprite>("Sprite");
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        animPlayer.Play("Idle");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -49,7 +50,7 @@ public class player : KinematicBody2D
         } else if (Input.IsActionPressed("ui_right")) {
             motion.x += ACCEL;
             facing_right = true;
-            animPlayer.Play("Attack");
+            animPlayer.Play("Run");
         } else {
             motion = motion.LinearInterpolate(Vector2.Zero, 0.2f);
             animPlayer.Play("Idle");
