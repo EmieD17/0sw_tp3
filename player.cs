@@ -49,7 +49,7 @@ public class player : KinematicBody2D
         } else if (Input.IsActionPressed("ui_right")) {
             motion.x += ACCEL;
             facing_right = true;
-            animPlayer.Play("Run");
+            animPlayer.Play("Attack");
         } else {
             motion = motion.LinearInterpolate(Vector2.Zero, 0.2f);
             animPlayer.Play("Idle");
