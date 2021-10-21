@@ -99,29 +99,29 @@ tracks/0/keys = {
 "values": [ 18, 19 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Run"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "fall"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "jump"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeTransition" id=14]
+[sub_resource type="AnimationNodeTransition" id=12]
 input_count = 2
 input_0/name = "fall"
 input_0/auto_advance = false
 input_1/name = "jump"
 input_1/auto_advance = false
 
-[sub_resource type="AnimationNodeTransition" id=15]
+[sub_resource type="AnimationNodeTransition" id=13]
 input_count = 3
 input_0/name = "Idle"
 input_0/auto_advance = false
@@ -130,31 +130,31 @@ input_1/auto_advance = false
 input_2/name = "attack"
 input_2/auto_advance = false
 
-[sub_resource type="AnimationNodeTransition" id=16]
+[sub_resource type="AnimationNodeTransition" id=14]
 input_count = 2
 input_0/name = "ground"
 input_0/auto_advance = false
 input_1/name = "air"
 input_1/auto_advance = false
 
-[sub_resource type="AnimationNodeBlendTree" id=8]
+[sub_resource type="AnimationNodeBlendTree" id=15]
 graph_offset = Vector2( -106.667, -66.8889 )
-nodes/Animation/node = SubResource( 13 )
+nodes/Animation/node = SubResource( 11 )
 nodes/Animation/position = Vector2( 80, 26.6667 )
-"nodes/Animation 2/node" = SubResource( 9 )
+"nodes/Animation 2/node" = SubResource( 7 )
 "nodes/Animation 2/position" = Vector2( 80, 213.333 )
-"nodes/Animation 3/node" = SubResource( 10 )
+"nodes/Animation 3/node" = SubResource( 8 )
 "nodes/Animation 3/position" = Vector2( 80, 400 )
-"nodes/Animation 4/node" = SubResource( 11 )
+"nodes/Animation 4/node" = SubResource( 9 )
 "nodes/Animation 4/position" = Vector2( 346.667, 506.667 )
-"nodes/Animation 5/node" = SubResource( 12 )
+"nodes/Animation 5/node" = SubResource( 10 )
 "nodes/Animation 5/position" = Vector2( 346.667, 720 )
-nodes/air/node = SubResource( 14 )
+nodes/air/node = SubResource( 12 )
 nodes/air/position = Vector2( 560, 506.667 )
-nodes/ground/node = SubResource( 15 )
+nodes/ground/node = SubResource( 13 )
 nodes/ground/position = Vector2( 400, 160 )
 nodes/output/position = Vector2( 1146.67, 213.333 )
-nodes/status/node = SubResource( 16 )
+nodes/status/node = SubResource( 14 )
 nodes/status/position = Vector2( 800, 213.333 )
 node_connections = [ "output", 0, "status", "status", 0, "ground", "status", 1, "air", "air", 0, "Animation 4", "air", 1, "Animation 5", "ground", 0, "Animation", "ground", 1, "Animation 2", "ground", 2, "Animation 3" ]
 
@@ -180,6 +180,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 9
 vframes = 6
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2( 2.5, 6.5 )
@@ -198,7 +199,7 @@ anims/fall = SubResource( 5 )
 anims/jump = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="player"]
-tree_root = SubResource( 8 )
+tree_root = SubResource( 15 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/air/current = 0

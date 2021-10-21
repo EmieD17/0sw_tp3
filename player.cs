@@ -25,12 +25,14 @@ public class player : KinematicBody2D
     {
         currentSprite = GetNode<Sprite>("Sprite");
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        
         //animPlayer.Play("Idle");
         animTree = GetNode<AnimationTree>("AnimationTree");
     }
 
     public override void _PhysicsProcess(float delta)
     {
+
         motion.y += GRAVITY;
 
         if(motion.y > MAXFALLSPEED) {
@@ -48,15 +50,18 @@ public class player : KinematicBody2D
         if (Input.IsActionPressed("ui_left")) {
             motion.x -= ACCEL;
             facing_right = false;
+            
             //animPlayer.Play("Run");
             animTree.Set("parameters/ground/current", 1);
         } else if (Input.IsActionPressed("ui_right")) {
             motion.x += ACCEL;
             facing_right = true;
+            
             //animPlayer.Play("Run");
             animTree.Set("parameters/ground/current", 1);
         } else {
             motion = motion.LinearInterpolate(Vector2.Zero, 0.2f);
+            
             //animPlayer.Play("Idle");
             animTree.Set("parameters/ground/current", 0);
         }
@@ -72,6 +77,7 @@ public class player : KinematicBody2D
             }
             if (Input.IsActionPressed("ui_attack")) {
                 Console.WriteLine("Attack!");
+
                 //animPlayer.Play("attack");
                 animTree.Set("parameters/ground/current", 2);
                 
@@ -80,9 +86,11 @@ public class player : KinematicBody2D
         if (!IsOnFloor()) {
             animTree.Set("parameters/status/current", 1);
             if (motion.y < 0) {
+                
                 //animPlayer.Play("jump");
                 animTree.Set("parameters/air/current", 1);
             } else if (motion.y > 0) {
+                
                 //animPlayer.Play("fall");
                 animTree.Set("parameters/air/current", 0);
             }
@@ -90,6 +98,4 @@ public class player : KinematicBody2D
 
         motion = MoveAndSlide(motion, UP);
     }
-
-    
 }
